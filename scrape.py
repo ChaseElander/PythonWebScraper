@@ -1,3 +1,4 @@
+import csv
 import requests
 from BeautifulSoup import BeautifulSoup
 
@@ -17,4 +18,6 @@ for row in table.findAll('tr'):
 		list_of_cells.append(text)
 	list_of_rows.append(list_of_cells)
 
-print list_of_rows
+outfile = open("./inmates.csv", "wb")
+writer = csv.writer(outfile)
+writer.writerows(list_of_rows)
