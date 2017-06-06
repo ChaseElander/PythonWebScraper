@@ -8,4 +8,7 @@ html = response.content
 #print html
 soup = BeautifulSoup(html)
 table = soup.find('tbody', attrs={'class':'stripe'})
-print table.prettify()
+
+for row in table.findAll('tr'):
+	for cell in row.findAll('td'):
+		print cell.text.replace('&nbsp;', '')
