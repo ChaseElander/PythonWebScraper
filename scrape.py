@@ -7,4 +7,5 @@ html = response.content
 
 #print html
 soup = BeautifulSoup(html)
-print soup.prettify()
+table = soup.find('tbody', attrs={'class':'stripe'})
+print table.prettify()
