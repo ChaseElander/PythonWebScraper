@@ -11,7 +11,7 @@ soup = BeautifulSoup(html)
 table = soup.find('tbody', attrs={'class':'stripe'})
 
 list_of_rows = []
-for row in table.findAll('tr'):
+for row in table.findAll('tr')[1:]:
 	list_of_cells = []
 	for cell in row.findAll('td'):
 		text = cell.text.replace('&nbsp;', '')
@@ -20,4 +20,5 @@ for row in table.findAll('tr'):
 
 outfile = open("./inmates.csv", "wb")
 writer = csv.writer(outfile)
+writer.writerow(["Last","First","Middle","Gender","Race","Age", "City","State"])
 writer.writerows(list_of_rows)
